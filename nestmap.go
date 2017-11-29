@@ -1,4 +1,6 @@
-// Gopherのためのjson操作パッケージ var1.1
+// json管理用のgithub.com/intelfike/jsonbaseをシンプルにしたもの。
+// 一部関数を破棄して、また目的をjsonの管理からmap/arrayの入れ子状態の管理に変更した。
+// golang標準のjsonパッケージと組み合わせて利用してもらうことになる。
 package nestmap
 
 import (

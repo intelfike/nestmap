@@ -4,6 +4,7 @@ package nestmap
 import (
 	"encoding/json"
 	"errors"
+	"sort"
 	"strconv"
 )
 
@@ -129,6 +130,7 @@ func (f *Nestmap) Keys() []string {
 	for key, _ := range i.(map[string]interface{}) {
 		s = append(s, key)
 	}
+	sort.Strings(s)
 	return s
 }
 

@@ -1,5 +1,7 @@
 package nestmap
 
+import "regexp"
+
 // Get json root.
 func (f Nestmap) Root() *Nestmap {
 	f.path = []interface{}{}
@@ -14,6 +16,17 @@ func (f Nestmap) Child(path ...interface{}) *Nestmap {
 			f.path = append(f.path, v)
 		default:
 			panic("Child(...interface{}.(type) == string or int)")
+		}
+	}
+	return &f
+}
+
+var splitReg = regexp.MustCompile("[/\\\\]")
+
+func (f Nestmap) ChildPath(path ...string) *Nestmap {
+	for _, v := range path {
+		for _, v2 := range splitReg.Split(v, -1) {
+			f.path = append(f.path, v2)
 		}
 	}
 	return &f

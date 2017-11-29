@@ -97,6 +97,14 @@ func (f *Nestmap) Push(a interface{}) error {
 	return f.Set(append(ar, a))
 }
 
+func (f *Nestmap) MakeArray() {
+	f.Set([]interface{}{})
+}
+
+func (f *Nestmap) MakeMap() {
+	f.Set(map[string]interface{}{})
+}
+
 // Remove() remove map or array element
 func (f *Nestmap) Remove() error {
 	if len(f.path) == 0 {
